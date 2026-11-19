@@ -497,7 +497,7 @@ class GradioPipeline(LivePortraitPipeline):
             ######## process source video ########
             source_rgb_lst = load_video(input_video)
             source_rgb_lst = [resize_to_limit(img, inference_cfg.source_max_dim, inference_cfg.source_division) for img in source_rgb_lst]
-            source_fps = int(get_fps(input_video))
+            source_fps = get_fps(input_video)
             n_frames = len(source_rgb_lst)
             log(f"Load source video from {input_video}. FPS is {source_fps}")
 
@@ -549,7 +549,7 @@ class GradioPipeline(LivePortraitPipeline):
             ######## process source video ########
             source_rgb_lst = load_video(input_video)
             source_rgb_lst = [resize_to_limit(img, inference_cfg.source_max_dim, inference_cfg.source_division) for img in source_rgb_lst]
-            source_fps = int(get_fps(input_video))
+            source_fps = get_fps(input_video)
             n_frames = len(source_rgb_lst)
             log(f"Load source video from {input_video}. FPS is {source_fps}")
 
