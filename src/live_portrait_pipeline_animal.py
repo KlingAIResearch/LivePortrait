@@ -100,7 +100,7 @@ class LivePortraitPipelineAnimal(object):
 
         elif osp.exists(args.driving) and is_video(args.driving):
             # load from video file, AND make motion template
-            output_fps = int(get_fps(args.driving))
+            output_fps = get_fps(args.driving)
             log(f"Load driving video from: {args.driving}, FPS is {output_fps}")
 
             driving_rgb_lst = load_video(args.driving)

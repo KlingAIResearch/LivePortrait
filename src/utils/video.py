@@ -137,9 +137,13 @@ def change_video_fps(input_file, output_file, fps=20, codec='libx264', crf=12):
 
 def get_fps(filepath, default_fps=25):
     try:
-        fps = cv2.VideoCapture(filepath).get(cv2.CAP_PROP_FPS)
+        capture = cv2.VideoCapture(filepath)
+        try:
+            fps = capture.get(cv2.CAP_PROP_FPS)
+        finally:
+            capture.release()
 
-        if fps in (0, None):
+        if fps is None or not np.isfinite(fps) or fps <= 0:
             fps = default_fps
     except Exception as e:
         log(e)
